@@ -6,7 +6,7 @@ const path = require("path");
 const axios = require("axios");
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
-var pdf = require("html-pdf");
+//var pdf = require("html-pdf");
 var options = {
   format: "Letter"
 };
@@ -16,7 +16,7 @@ const Employee = require("./lib/Employee.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
 const Manager = require("./lib/Manager.js");
-const generateHTML = require("./output/generateHTML.js");
+const generateHTML = require("./dist/generateHTML.js");
 
 // Sets up the Express App
 // =============================================================
@@ -174,7 +174,7 @@ function completedRoster(employees){
     console.log(employees);
     const html = generateHTML(employees);
     console.log(html);
-    writeFileAsync("./output/employees.html", html, "utf-8");
+    writeFileAsync("./dist/employees.html", html, "utf-8");
 }
 
 function init(){
@@ -184,4 +184,4 @@ function init(){
 
 init();
 
-// require("./output/employees.html")(app);
+// require("./dist/employees.html")(app);
